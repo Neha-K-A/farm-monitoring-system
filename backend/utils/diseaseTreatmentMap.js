@@ -1,0 +1,17 @@
+export const diseaseTreatmentMap = {
+  leaf_blight: 'Apply Mancozeb fungicide at 2.5g/liter. Remove affected leaves. Ensure proper drainage.',
+  powdery_mildew: 'Spray sulfur-based fungicide. Improve air circulation. Avoid overhead watering.',
+  bacterial_wilt: 'Remove infected plants immediately. Apply copper-based bactericide. Rotate crops next season.',
+  aphids: 'Spray neem oil solution (5ml/liter). Introduce ladybirds as natural predators. Use yellow sticky traps.',
+  root_rot: 'Improve soil drainage. Apply Trichoderma biocontrol. Reduce irrigation frequency.',
+  mosaic_virus: 'No chemical cure. Remove infected plants. Control aphid vectors with neem oil. Use resistant varieties.',
+  rust: 'Apply propiconazole fungicide. Remove infected leaves. Avoid wetting foliage.',
+  early_blight: 'Apply chlorothalonil fungicide. Maintain proper plant spacing. Water at base only.',
+  late_blight: 'Apply metalaxyl + mancozeb. Destroy infected material. Ensure good field drainage.',
+  downy_mildew: 'Apply copper oxychloride. Ensure proper air circulation. Avoid leaf wetness.',
+  fusarium_wilt: 'Remove and destroy infected plants. Apply carbendazim. Use resistant varieties next season.',
+  anthracnose: 'Apply mancozeb or copper-based fungicide. Remove infected fruits. Improve drainage.',
+  healthy: 'Plant appears healthy. Continue regular monitoring and preventive care.',
+  fruit_damaged: 'Removal advised. Focus on disease prevention in remaining fruits.',
+  unknown: 'Consult your local Krishi Vigyan Kendra (KVK) or agriculture officer.',
+}

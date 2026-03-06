@@ -1,0 +1,245 @@
+{
+  "info": {
+    "name": "Farm Monitoring Backend API",
+    "description": "Postman Collection for standard flows",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Signup",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Ravi Farmer\",\n    \"phone\": \"9876543210\",\n    \"password\": \"SecurePass123\",\n    \"role\": \"farmer\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/signup",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "signup"]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"phone\": \"9876543210\",\n    \"password\": \"SecurePass123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Onboarding",
+      "item": [
+        {
+          "name": "Complete Onboarding",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"personal\": {\n        \"gender\": \"female\",\n        \"languagePreference\": \"kn\",\n        \"farmingExperienceYears\": 5\n    },\n    \"farm\": {\n        \"name\": \"Green Valley Farm\",\n        \"location\": {\n            \"village\": \"Hoskote\",\n            \"district\": \"Bangalore Rural\",\n            \"state\": \"Karnataka\"\n        },\n        \"totalAreaAcres\": 2.5,\n        \"irrigationType\": \"Drip\"\n    },\n    \"crops\": [\n        {\n            \"name\": \"Tomato\",\n            \"variety\": \"Arka Rakshak\",\n            \"plantedDate\": \"2023-10-01\"\n        }\n    ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/onboarding",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "onboarding"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Finance",
+      "item": [
+        {
+          "name": "Add Expense",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"farmId\": \"{{farmId}}\",\n    \"categoryOrSource\": \"Fertilizer\",\n    \"amount\": 1500,\n    \"date\": \"2023-10-15T00:00:00.000Z\",\n    \"note\": \"Bought NPK mix\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/finance/expense",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "finance", "expense"]
+            }
+          }
+        },
+        {
+          "name": "Get Summary",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/finance/summary?farmId={{farmId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "finance", "summary"],
+              "query": [
+                {
+                  "key": "farmId",
+                  "value": "{{farmId}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Weather & Discovery",
+      "item": [
+        {
+          "name": "Current Weather",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/weather/current?lat=12.9716&lon=77.5946",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "weather", "current"],
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "12.9716"
+                },
+                {
+                  "key": "lon",
+                  "value": "77.5946"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Weather Advice",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/weather/advice?farmId={{farmId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "weather", "advice"],
+              "query": [
+                {
+                  "key": "farmId",
+                  "value": "{{farmId}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Detection",
+      "item": [
+        {
+          "name": "Analyze Image",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "path_to_some_tomato_image.jpg"
+                },
+                {
+                  "key": "farmId",
+                  "value": "{{farmId}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/detection/analyze",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "detection", "analyze"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "accessToken",
+      "value": "your_jwt_access_token"
+    },
+    {
+      "key": "farmId",
+      "value": "your_farm_object_id"
+    }
+  ]
+}
